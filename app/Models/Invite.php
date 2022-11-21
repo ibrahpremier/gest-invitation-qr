@@ -12,7 +12,7 @@ class Invite extends Model
 
     protected $fillable = [
         'nom',
-        'prenom',
+        // 'prenom',
         'table',
         'nb_place',
         'telephone',

@@ -25,3 +25,5 @@ Route::resources([
 
 
 Route::get('/check/{code}',[InviteController::class,'check'])->name('check');
+Route::post('/importer',[InviteController::class,'import'])->name('inviter.import');
+Route::get('/charger-list',[InviteController::class,'import_form'])->name('inviter.import-form');

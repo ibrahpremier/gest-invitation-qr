@@ -23,7 +23,7 @@
           </div>
         </div>
         
-        <div class="form-group row">
+        {{-- <div class="form-group row">
           <label for="prenom"
             class="col-sm-3 col-md-4 col-form-label">Prénom(s) <span class="text-danger">*</span></label>
           <div class="col-sm-9 col-md-8">
@@ -32,7 +32,7 @@
           <p class="text-danger">{{ $message }}</p>
           @enderror
           </div>
-        </div>
+        </div> --}}
         
         <div class="form-group row">
           <label for="table"
@@ -46,15 +46,15 @@
         </div>
 
         <div class="form-group row">
-            <label for="place"
+            <label for="nb_place"
               class="col-sm-3 col-md-4 col-form-label">nombre de place <span class="text-danger">*</span></label>
             <div class="col-sm-9 col-md-8">
-              <select name="place" id="place" class="form-control">
+              <select name="nb_place" id="nb_place" class="form-control">
                 @for ($i=1; $i<10; $i++)
                 <option @if ($invite->nb_place == $i) selected @endif >{{$i}}</option>
                 @endfor
               </select>
-            @error('place')
+            @error('nb_place')
             <p class="text-danger">{{ $message }}</p>
             @enderror
             </div>

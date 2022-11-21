@@ -10,7 +10,7 @@
           <th>N°</th>
           <th>Code QR</th>
           <th>Nom</th>
-          <th>Table</th>
+          <th>N° Table</th>
           <th>Nombre de place reservé</th>
           <th>Téléphone</th>
           <th>#</th>
@@ -19,13 +19,13 @@
         <tbody>
           @foreach ($invites as $item)
           <tr>
-            <td>{{$item->id}}</td>
+            <td>{{$loop->iteration}}</td>
             <td class="text-center">
               <img height="50" alt='Code barre' src="https://barcode.tec-it.com/barcode.ashx?data={{strtoupper($item->nom.'+'.$item->prenom).'%0A%0A'.urlencode('https://invitation.expertizlab.com/check/'.$item->code_unique)}}&code=MobileQRCode&translate-esc=true&eclevel=L"/> <br>
-       <a class="btn btn-link btn-sm" href="{{route('invite.show',$item->code_unique)}}"><i class="fa fa-eye"></i> afficher</a>
+       <a class="btn btn-link btn-sm" href="{{route('invite.show',$item->code_unique)}}"><i class="fa fa-eye"></i> {{$item->code_unique}}</a>
             </td>
-            <td>{{$item->nom.' '.$item->prenom}}</td>
-            <td>N°{{$item->table}}</td>
+            <td>{{$item->nom}}</td>
+            <td>{{$item->table}}</td>
             <td>{{$item->nb_place}} entrée(s)</td>
             <td>{{$item->telephone}}</td>
             <td>{{$item->photo}}</td>
@@ -51,6 +51,10 @@
 <a class="btn btn-primary btn-flat" href="{{route('invite.create')}}">
     <i class="fas fa-plus"></i> 
     Ajouter un invité
+</a>
+<a class="btn btn-info btn-flat" href="{{route('inviter.import-form')}}">
+    <i class="fas fa-plus"></i> 
+    Charger une liste
 </a>
 @endsection
 

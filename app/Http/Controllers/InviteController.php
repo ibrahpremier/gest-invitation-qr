@@ -4,11 +4,28 @@ namespace App\Http\Controllers;
 
 use App\Models\Invite;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
+// use Illuminate\Support\Facades\Redirect;
+use App\Imports\InvitesImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class InviteController extends Controller
 {
 
+    public function import_form()
+    {
+        return view('upload-form');
+    }
+
+
+    public function import(Request $request) 
+    {
+        $request->validate([
+            'liste' => 'required|file|mimes:xls,xlsx,csv'
+         ]);
+         
+        Excel::import(new InvitesImport, $request->file('liste'));
+        return redirect(route('invite.index'))->with('success', 'All good!');
+    }
 
     public function check($code)
     {
@@ -47,15 +64,13 @@ class InviteController extends Controller
     {
         $request->validate([
             'nom'=>'required',
-            'prenom'=>'required',
             'table'=>'required',
             'place'=>'required',
         ]);
 
         $invite = Invite::create([
-            'nom'=>$request->input('nom'),
-            'prenom'=>$request->input('prenom'),
-            'table'=>$request->input('table'),
+            'nom'=>ucwords(strtolower($request->input('nom'))),
+            'table'=>strtoupper($request->input('table')),
             'nb_place'=>$request->input('place'),
             'telephone'=>$request->input('telephone'),
             'code_unique'=>uniqid()
@@ -99,19 +114,15 @@ class InviteController extends Controller
     {
         $request->validate([
             'nom'=>'required',
-            'prenom'=>'required',
             'table'=>'required',
-            'place'=>'required',
+            'nb_place'=>'required',
         ]);
 
-        $invite->nom = $request->input('nom');
-        $invite->prenom = $request->input('prenom');
-        $invite->table = $request->input('table');
-        $invite->nb_place = $request->input('place');
-        $invite->telephone = $request->input('telephone');
-        $invite->save();
+        $invite->update($request->all());
         
         return redirect(route('invite.show',$invite->code_unique));
+
+        // return Redirect::back();
 
     }
 

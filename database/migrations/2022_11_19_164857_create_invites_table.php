@@ -16,8 +16,7 @@ return new class extends Migration
         Schema::create('invites', function (Blueprint $table) {
             $table->id();
             $table->string('nom',50);
-            $table->string('prenom',50);
-            $table->integer('table')->nullable();
+            $table->string('table')->nullable();
             $table->integer('nb_place')->nullable();
             $table->string('telephone')->nullable();
             $table->integer('photo')->nullable();
