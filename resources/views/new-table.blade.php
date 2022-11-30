@@ -41,7 +41,7 @@
       </div>
       <div class="card-footer">
 
-    <a href="{{route('invite.index')}}" class="btn btn-danger"> annuler</a>
+    <a href="{{route('table.index')}}" class="btn btn-default"> annuler</a>
     <button type="submit" class="btn btn-danger float-right"> ENREGISTRER</button>
       </div>
     </div>

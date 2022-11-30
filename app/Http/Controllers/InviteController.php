@@ -160,13 +160,12 @@ class InviteController extends Controller
     {
         $request->validate([
             'nom'=>'required',
-            'table_id'=>'required',
-            'nb_place'=>'required',
         ]);
 
         $invite->update($request->all());
         
         return redirect(route('invite.show',$invite->code_unique));
+        // return back()->with('success','Infos mis à jour');
 
         // return Redirect::back();
 

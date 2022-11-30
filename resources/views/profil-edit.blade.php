@@ -34,12 +34,10 @@
           </div>
         </div> --}}
         
-        <div class="form-group row">
+        {{-- <div class="form-group row">
           <label for="table"
             class="col-sm-3 col-md-4 col-form-label">Table <span class="text-danger">*</span></label>
           <div class="col-sm-9 col-md-8">
-            {{-- <input type="text" class="form-control @error('table') is-invalid @enderror"  name="table" id="table" placeholder="N° table" value="{{$invite->table->code}}"  required> --}}
-
             <select name="table" id="table" class="form-control @error('table') is-invalid @enderror">
               @foreach ($tables as $item )
                 <option value="{{$item->id}}" @if($item->code == $invite->table->code) selected @endif>{{$item->code}} ({{$item->disponible}} dispo.)</option>
@@ -49,9 +47,9 @@
           <p class="text-danger">{{ $message }}</p>
           @enderror
           </div>
-        </div>
+        </div> --}}
 
-        <div class="form-group row">
+        {{-- <div class="form-group row">
             <label for="nb_place"
               class="col-sm-3 col-md-4 col-form-label">nombre de place <span class="text-danger">*</span></label>
             <div class="col-sm-9 col-md-8">
@@ -64,7 +62,7 @@
             <p class="text-danger">{{ $message }}</p>
             @enderror
             </div>
-        </div>
+        </div> --}}
 
 
         <div class="form-group row">
