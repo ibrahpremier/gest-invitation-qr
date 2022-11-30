@@ -13,10 +13,16 @@ class Invite extends Model
     protected $fillable = [
         'nom',
         // 'prenom',
-        'table',
+        'table_id',
         'nb_place',
         'telephone',
         'photo',
         'code_unique',
     ];
+
+
+    public function table()
+    {
+        return $this->belongsTo(Table::class);
+    }
 }

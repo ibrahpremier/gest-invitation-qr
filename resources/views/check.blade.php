@@ -86,7 +86,7 @@
       <div class="card-footer">
 
     {{-- <a href="{{route('invite.index')}}" class="btn btn-default"> retour</a> --}}
-    {{-- <button type="submit" class="btn btn-primary float-right"> ENREGISTRER</button> --}}
+    {{-- <button type="submit" class="btn btn-danger float-right"> ENREGISTRER</button> --}}
       </div>
     </div>
     </div>
@@ -96,7 +96,7 @@
 <div class="row">
     <div class="col-md-10 offset-md-1 ">
       <div class="card">
-        <div class="card-header bg-info">
+        <div class="card-header bg-danger">
           MARIAGE DE .... | Profil invité
           {{-- <a href="{{route('invite.edit',$invite->code_unique)}}" class="btn btn-danger float-right">modifier</a> --}}
         </div>
@@ -113,7 +113,7 @@
       <div class="card-footer">
 
     {{-- <a href="{{route('invite.index')}}" class="btn btn-default"> retour</a> --}}
-    {{-- <button type="submit" class="btn btn-primary float-right"> ENREGISTRER</button> --}}
+    {{-- <button type="submit" class="btn btn-danger float-right"> ENREGISTRER</button> --}}
       </div>
     </div>
     </div>

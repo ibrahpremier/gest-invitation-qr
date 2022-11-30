@@ -29,7 +29,7 @@
           @endphp
            <i class="fas fa-power-off"></i></a>
         <div class="dropdown-menu dropdown-menu dropdown-menu-right">
-          <a href="{{route('disconnect')}}" class="dropdown-item dropdown-footer bg-primary">
+          <a href="{{route('disconnect')}}" class="dropdown-item dropdown-footer bg-danger">
             Se déconnecter 
             <i class="fas fa-sign-out-alt fa-lg"></i>
           </a>

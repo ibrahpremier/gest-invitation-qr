@@ -8,27 +8,27 @@
         <thead>
         <tr>
           <th>N°</th>
-          <th>Code QR</th>
+          {{-- <th>Code QR</th> --}}
           <th>Nom</th>
-          <th>N° Table</th>
-          <th>Nombre de place reservé</th>
+          <th>Table</th>
+          <th>nbre d'entrées</th>
           <th>Téléphone</th>
-          <th>#</th>
+          {{-- <th>#</th> --}}
         </tr>
         </thead>
         <tbody>
           @foreach ($invites as $item)
           <tr>
             <td>{{$loop->iteration}}</td>
-            <td class="text-center">
+            {{-- <td class="text-center">
               <img height="50" alt='Code barre' src="https://barcode.tec-it.com/barcode.ashx?data={{strtoupper($item->nom.'+'.$item->prenom).'%0A%0A'.urlencode('https://invitation.expertizlab.com/check/'.$item->code_unique)}}&code=MobileQRCode&translate-esc=true&eclevel=L"/> <br>
        <a class="btn btn-link btn-sm" href="{{route('invite.show',$item->code_unique)}}"><i class="fa fa-eye"></i> {{$item->code_unique}}</a>
-            </td>
-            <td>{{$item->nom}}</td>
-            <td>{{$item->table}}</td>
-            <td>{{$item->nb_place}} entrée(s)</td>
+            </td> --}}
+            <td><a class="btn btn-link btn-sm" href="{{route('invite.show',$item->code_unique)}}">{{$item->nom}}</a></td>
+            <td class="text-center">@if($item->table) <a class="btn btn-link btn-sm" href="{{route('table.show',$item->table->id)}}">Table {{$item->table->code}}</a> @else <em>non assigné</em> @endif</td>
+            <td class="text-center">{{$item->nb_place}}</td>
             <td>{{$item->telephone}}</td>
-            <td>{{$item->photo}}</td>
+            {{-- <td>{{$item->photo}}</td> --}}
           </tr>
               
           @endforeach
@@ -48,14 +48,14 @@
 @endsection
 
 @section("bouton-action")
-<a class="btn btn-primary btn-flat" href="{{route('invite.create')}}">
+<a class="btn btn-danger btn-flat" href="{{route('invite.create')}}">
     <i class="fas fa-plus"></i> 
-    Ajouter un invité
+    Créer un invité
 </a>
-<a class="btn btn-info btn-flat" href="{{route('inviter.import-form')}}">
+{{-- <a class="btn btn-info btn-flat" href="{{route('invite.import-form')}}">
     <i class="fas fa-plus"></i> 
     Charger une liste
-</a>
+</a> --}}
 @endsection
 
 @section("custom_script")
@@ -64,6 +64,7 @@
     $("#example1").DataTable({
       dom: 'Bfrtip',
       buttons: ["excel", "pdf"],
+      paging: false,
       language: {
           "url": 'assets/datatable_fr.json'
       },

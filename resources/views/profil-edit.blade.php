@@ -5,9 +5,9 @@
   @csrf
  @method('PUT')
   <div class="row">
-    <div class="col-md-4 offset-md-3 ">
+    <div class="col-md-5 offset-md-3 ">
       <div class="card">
-        <div class="card-header bg-primary">
+        <div class="card-header bg-danger">
           Modification des informations de l'invité
         </div>
       <div class="card-body">
@@ -36,9 +36,15 @@
         
         <div class="form-group row">
           <label for="table"
-            class="col-sm-3 col-md-4 col-form-label">N° table <span class="text-danger">*</span></label>
+            class="col-sm-3 col-md-4 col-form-label">Table <span class="text-danger">*</span></label>
           <div class="col-sm-9 col-md-8">
-            <input type="text" class="form-control @error('table') is-invalid @enderror"  name="table" id="table" placeholder="N° table" value="{{$invite->table}}"  required>
+            {{-- <input type="text" class="form-control @error('table') is-invalid @enderror"  name="table" id="table" placeholder="N° table" value="{{$invite->table->code}}"  required> --}}
+
+            <select name="table" id="table" class="form-control @error('table') is-invalid @enderror">
+              @foreach ($tables as $item )
+                <option value="{{$item->id}}" @if($item->code == $invite->table->code) selected @endif>{{$item->code}} ({{$item->disponible}} dispo.)</option>
+              @endforeach 
+            </select>
           @error('table')
           <p class="text-danger">{{ $message }}</p>
           @enderror
@@ -76,7 +82,7 @@
       <div class="card-footer">
 
     <a href="{{route('invite.index')}}" class="btn btn-danger"> annuler</a>
-    <button type="submit" class="btn btn-primary float-right"> ENREGISTRER</button>
+    <button type="submit" class="btn btn-danger float-right"> ENREGISTRER</button>
       </div>
     </div>
     </div>

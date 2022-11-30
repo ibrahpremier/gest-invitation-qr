@@ -1,12 +1,12 @@
 @extends("layout")
 
 @section("content")
-<form class="form-horizontal" method="POST" action="{{route('inviter.import')}}" enctype="multipart/form-data">
+<form class="form-horizontal" method="POST" action="{{route('invite.import')}}" enctype="multipart/form-data">
   @csrf
   <div class="row">
     <div class="col-md-5 offset-md-3 ">
       <div class="card">
-        <div class="card-header bg-primary">
+        <div class="card-header bg-danger">
           Chargement depuis un fichier
         </div>
       <div class="card-body">
@@ -26,7 +26,7 @@
       <div class="card-footer">
 
     <a href="{{route('invite.index')}}" class="btn btn-danger"> annuler</a>
-    <button type="submit" class="btn btn-primary float-right"> ENREGISTRER</button>
+    <button type="submit" class="btn btn-danger float-right"> ENREGISTRER</button>
       </div>
     </div>
     </div>

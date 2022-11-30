@@ -4,9 +4,9 @@
 <form class="form-horizontal" method="POST" action="{{route('invite.store')}}">
   @csrf
   <div class="row">
-    <div class="col-md-4 offset-md-3 ">
+    <div class="col-md-5 offset-md-3 ">
       <div class="card">
-        <div class="card-header bg-primary">
+        <div class="card-header bg-danger">
           Création d'un invité
         </div>
       <div class="card-body">
@@ -23,21 +23,15 @@
         </div>
         
         {{-- <div class="form-group row">
-          <label for="prenom"
-            class="col-sm-3 col-md-4 col-form-label">Prénom(s) <span class="text-danger">*</span></label>
-          <div class="col-sm-9 col-md-8">
-            <input type="text" class="form-control @error('prenom') is-invalid @enderror"  name="prenom" id="prenom" placeholder="prénom(s)" required>
-          @error('prenom')
-          <p class="text-danger">{{ $message }}</p>
-          @enderror
-          </div>
-        </div> --}}
-        
-        <div class="form-group row">
           <label for="table"
             class="col-sm-3 col-md-4 col-form-label">N° table <span class="text-danger">*</span></label>
           <div class="col-sm-9 col-md-8">
-            <input type="text" class="form-control @error('table') is-invalid @enderror"  name="table" id="table" placeholder="N° table" required>
+
+            <select name="table" id="table" class="form-control @error('table') is-invalid @enderror">
+              @foreach ($tables as $item )
+                <option value="{{$item->id}}">{{$item->code}} ({{$item->disponible}} dispo.)</option>
+              @endforeach 
+            </select>
           @error('table')
           <p class="text-danger">{{ $message }}</p>
           @enderror
@@ -46,7 +40,7 @@
 
         <div class="form-group row">
           <label for="place"
-            class="col-sm-3 col-md-4 col-form-label">nombre de place <span class="text-danger">*</span></label>
+            class="col-sm-3 col-md-4 col-form-label">nombre de sièges<span class="text-danger">*</span></label>
           <div class="col-sm-9 col-md-8">
             <select name="place" id="place" class="form-control">
               @for ($i=1; $i<10; $i++)
@@ -57,7 +51,7 @@
           <p class="text-danger">{{ $message }}</p>
           @enderror
           </div>
-        </div>
+        </div> --}}
 
 
         <div class="form-group row">
@@ -75,7 +69,7 @@
       <div class="card-footer">
 
     <a href="{{route('invite.index')}}" class="btn btn-danger"> annuler</a>
-    <button type="submit" class="btn btn-primary float-right"> ENREGISTRER</button>
+    <button type="submit" class="btn btn-danger float-right"> ENREGISTRER</button>
       </div>
     </div>
     </div>

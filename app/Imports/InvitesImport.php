@@ -17,9 +17,7 @@ class InvitesImport implements ToModel
     {
         return new Invite([
             'nom'  => $row[0],
-            'nb_place' => $row[1],
-            'table' => $row[2],
-            'telephone' => $row[3],
+            'telephone' => $row[1],
             'code_unique' => uniqid()
         ]);
     }

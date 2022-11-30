@@ -6,10 +6,52 @@ use App\Models\Invite;
 use Illuminate\Http\Request;
 // use Illuminate\Support\Facades\Redirect;
 use App\Imports\InvitesImport;
+use App\Models\Table;
 use Maatwebsite\Excel\Facades\Excel;
+use Flasher\Prime\FlasherInterface;
 
 class InviteController extends Controller
 {
+
+    public function remove(Invite $invite)
+    {
+        $table = Table::findorfail($invite->table_id);
+        $table->disponible = $table->disponible + $invite->nb_place;
+        $table->save();
+
+        $invite->table_id = null;
+        $invite->nb_place = null;
+        $invite->save();
+
+        flash()->addSuccess('Invité retiré de cette table');
+        return back();
+    }
+
+    public function save_add_to_table(Request $request)
+    {
+        $table = Table::findorfail($request->input('table_id'));
+        $invite = Invite::findorfail($request->input('invite_id'));
+        if($request->input('nb_place')<=$table->disponible){
+            $invite->nb_place = $request->input('nb_place');
+            $invite->table_id = $request->input('table_id');
+            $invite->save();
+            $table->disponible = $table->disponible - $request->input('nb_place');
+            $table->save();
+            flash()->addSuccess('Invité ajouté');
+            // return redirect(route('table.show',$request->input('table_id')));
+        } else {
+            flash()->addDanger('Nombre de place insuffisant');
+        }
+
+        return back();
+
+    }
+
+    public function add_to_table_frm()
+    {
+        $invites = Invite::where('table_id',null)->get();
+        return view('add-to-table',compact('invites'));
+    }
 
     public function import_form()
     {
@@ -24,7 +66,7 @@ class InviteController extends Controller
          ]);
          
         Excel::import(new InvitesImport, $request->file('liste'));
-        return redirect(route('invite.index'))->with('success', 'All good!');
+        return redirect(route('invite.index'))->with('success', 'Liste des invités importés!');
     }
 
     public function check($code)
@@ -51,7 +93,8 @@ class InviteController extends Controller
      */
     public function create()
     {
-        return view('formulaire');
+        $tables = Table::all();
+        return view('formulaire',compact('tables'));
     }
 
     /**
@@ -64,14 +107,16 @@ class InviteController extends Controller
     {
         $request->validate([
             'nom'=>'required',
-            'table'=>'required',
-            'place'=>'required',
+            // 'table'=>'required',
+            // 'place'=>'required',
         ]);
+
+        // $table = Table::where('id')
 
         $invite = Invite::create([
             'nom'=>ucwords(strtolower($request->input('nom'))),
-            'table'=>strtoupper($request->input('table')),
-            'nb_place'=>$request->input('place'),
+            // 'table_id'=>strtoupper($request->input('table')),
+            // 'nb_place'=>$request->input('place'),
             'telephone'=>$request->input('telephone'),
             'code_unique'=>uniqid()
         ]);
@@ -99,8 +144,9 @@ class InviteController extends Controller
      */
     public function edit($code)
     {
+        $tables = Table::all();
         $invite = Invite::where('code_unique',$code)->first();
-        return view('profil-edit',compact('invite'));
+        return view('profil-edit',compact('invite','tables'));
     }
 
     /**
@@ -114,7 +160,7 @@ class InviteController extends Controller
     {
         $request->validate([
             'nom'=>'required',
-            'table'=>'required',
+            'table_id'=>'required',
             'nb_place'=>'required',
         ]);
 
