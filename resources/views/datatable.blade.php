@@ -56,6 +56,10 @@
     <i class="fas fa-plus"></i> 
     Charger une liste
 </a> --}}
+<a class="btn btn-default btn-flat" target="blank" href="{{route('print-all')}}">
+    <i class="fas fa-print"></i> 
+    Imprimer les cartes
+</a>
 @endsection
 
 @section("custom_script")

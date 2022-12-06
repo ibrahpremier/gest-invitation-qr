@@ -71,8 +71,7 @@
                   </div>
             </div>
 
-            <div class="col-5 p-2 text-center">
-                {{-- <small class="text-bold">CODE QR </small> <br> --}}
+            <div class="col-6 p-2 text-center">
                 <img height="190" alt='Code barre' src="https://barcode.tec-it.com/barcode.ashx?data={{strtoupper($invite->nom.'+'.$invite->prenom).'%0A%0A'.urlencode('https://invitation.expertizlab.com/check/'.$invite->code_unique)}}&code=MobileQRCode&translate-esc=true&eclevel=L"/>
             </div>
             {{-- <div class="col-5 p-2 text-center">
@@ -81,6 +80,13 @@
             </div> --}}
         
 
+      </div>
+      <div class="row pb-2">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <a class="btn btn-danger btn-block btn-lg" href="{{route('print',$invite->code_unique)}}" target="blank"><i class="fas fa-download"></i> Télécharger la carte d'invitation</a>
+        </div>
+        <div class="col-md-3"></div>
       </div>
       <div class="row">
         <div class="col-md-1"></div>

@@ -9,9 +9,27 @@ use App\Imports\InvitesImport;
 use App\Models\Table;
 use Maatwebsite\Excel\Facades\Excel;
 use Flasher\Prime\FlasherInterface;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Carbon\Carbon;
 
 class InviteController extends Controller
 {
+
+
+    // Generate PDF
+    public function createPDF($code) {    
+        $invite = Invite::where('code_unique',$code)->first();
+        $pdf = Pdf::loadView('prt.invitation',compact('invite'));
+        return $pdf->stream('Invitation-'.$invite->id.'.pdf');
+      }
+
+    // Generate all PDF
+    public function createAllPDF() {    
+        $invites = Invite::all();
+        // $pdf = Pdf::loadView('prt.invitations',compact('invites'));
+        // return $pdf->stream('Liste des cartes'.'.pdf');
+        return view('prt.invitations',compact('invites'));
+      }
 
     public function remove(Invite $invite)
     {
