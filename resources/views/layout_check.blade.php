@@ -19,7 +19,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <div class="wrapper">
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div>
     <!-- Content Header (Page header) -->
     <!-- /.content-header -->
 

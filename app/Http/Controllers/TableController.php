@@ -15,7 +15,7 @@ class TableController extends Controller
      */
     public function index()
     {
-        $tables = Table::all();
+        $tables = Table::OrderBy('code')->get();
         return view('table-liste',compact('tables'));
     }
 
