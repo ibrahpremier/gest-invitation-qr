@@ -34,6 +34,7 @@ Route::get('/add-to-table-frm',[InviteController::class,'add_to_table_frm'])->na
 Route::post('/add-to-table',[InviteController::class,'save_add_to_table'])->name('invite.save-add-to-table');
 Route::get('/remove-to-table/{invite}',[InviteController::class,'remove'])->name('invite.remove-to-table');
 
+Route::get('/prt', [InviteController::class, 'createPDF0'])->name('print_vierge');
 Route::get('/prt/{id}', [InviteController::class, 'createPDF'])->name('print');
 Route::get('/prt_all', [InviteController::class, 'createAllPDF'])->name('print-all');
 Route::get('/prt_all_qr', [InviteController::class, 'all_qr'])->name('print-all-qr');

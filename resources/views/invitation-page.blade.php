@@ -20,7 +20,7 @@
       <div class="row pb-2">
         <div class="col-md-3"></div>
         <div class="col-md-6">
-          <a class="btn btn-danger btn-block btn-lg" href="{{route('print',999)}}" target="blank"><i class="fas fa-download"></i> Télécharger la carte d'invitation</a>
+          <a class="btn btn-danger btn-block btn-lg" href="{{route('print_vierge')}}" target="blank"><i class="fas fa-download"></i> Télécharger la carte d'invitation</a>
         </div>
         <div class="col-md-3"></div>
       </div>

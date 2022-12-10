@@ -21,28 +21,26 @@ class InviteController extends Controller
     public function all_qr()
     {
         $invites = Invite::all();
-        // $pdf = Pdf::loadView('prt.invitations',compact('invites'));
-        // return $pdf->stream('Liste des cartes'.'.pdf');
         return view('prt.qrcodes',compact('invites'));
     }
 
     // Generate PDF
-    public function createPDF($code) {    
-        if($code & $code!=999){
+    public function createPDF0() {  
+            $pdf = Pdf::loadView('prt.invitation');
+            return $pdf->download('Carte d\'Invitation-'.uniqid().'.pdf');
+        
+      }
+
+    // Generate PDF
+    public function createPDF($code) {  
             $invite = Invite::where('code_unique',$code)->first();
             $pdf = Pdf::loadView('prt.invitation',compact('invite'));
             return $pdf->download('Carte - invité '.$invite->id.'.pdf');
-        } else{
-            $pdf = Pdf::loadView('prt.invitation');
-            return $pdf->download('Invitation-'.uniqid().'.pdf');
-        }
       }
 
     // Generate all PDF
     public function createAllPDF() {    
         $invites = Invite::all();
-        // $pdf = Pdf::loadView('prt.invitations',compact('invites'));
-        // return $pdf->stream('Liste des cartes'.'.pdf');
         return view('prt.invitations',compact('invites'));
       }
 

@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
-    <title>Carte d'invitation invité @if($invite) N°{{$invite->id}} @endif  </title>
+    <title>Carte d'invitation invité @if(isset($invite)) N°{{$invite->id}} @endif  </title>
 </head>
 
 <body>
@@ -26,7 +25,7 @@
     </style>
 
 <img style="width: 100%" src="{{public_path('/assets/dist/img/crea-invit.jpg')}}" alt="Invitation">
-@if($invite)
+@if(isset($invite))
 {{-- <img class="qr_code" alt='Code barre' src="https://barcode.tec-it.com/barcode.ashx?data={{strtoupper($invite->nom.'+'.$invite->prenom).'%0A%0A'.urlencode('https://invitation.expertizlab.com/check/'.$invite->code_unique)}}&code=MobileQRCode&translate-esc=true&eclevel=L"/> --}}
 
 <img class="qr_code" alt='Code barre' src="https://barcode.tec-it.com/barcode.ashx?data={{urlencode(strtoupper($invite->nom)).'%0A%0A'.urlencode('https://invitation.expertizlab.com/check/'.$invite->code_unique)}}&code=MobileQRCode&translate-esc=true&eclevel=L"/>
