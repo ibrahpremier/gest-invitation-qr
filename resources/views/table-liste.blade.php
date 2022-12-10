@@ -4,12 +4,12 @@
 <div class="card">
     <!-- /.card-header -->
     <div class="card-body">
-      <table id="example1" class="table table-bordered table-striped">
+      <table id="example1" class="table table-bordered table-striped table-responsive">
         <thead>
         <tr>
           <th>#</th>
-          <th>Table</th>
-          <th>Nbre de place</th>
+          <th>Numéro de table</th>
+          <th>Nombre de place</th>
           <th>Diponible(s)</th>
         </tr>
         </thead>

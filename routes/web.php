@@ -27,6 +27,7 @@ Route::resources([
 
 
 Route::get('/check/{code}',[InviteController::class,'check'])->name('check');
+Route::get('/invitation',[InviteController::class,'show_invitation'])->name('show-invitation');
 Route::post('/importer',[InviteController::class,'import'])->name('invite.import');
 Route::get('/charger-list',[InviteController::class,'import_form'])->name('invite.import-form');
 Route::get('/add-to-table-frm',[InviteController::class,'add_to_table_frm'])->name('invite.add_to_table_frm');
@@ -35,3 +36,4 @@ Route::get('/remove-to-table/{invite}',[InviteController::class,'remove'])->name
 
 Route::get('/prt/{id}', [InviteController::class, 'createPDF'])->name('print');
 Route::get('/prt_all', [InviteController::class, 'createAllPDF'])->name('print-all');
+Route::get('/prt_all_qr', [InviteController::class, 'all_qr'])->name('print-all-qr');

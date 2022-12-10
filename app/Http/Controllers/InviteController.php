@@ -16,11 +16,26 @@ class InviteController extends Controller
 {
 
 
+    // Generate QR
+
+    public function all_qr()
+    {
+        $invites = Invite::all();
+        // $pdf = Pdf::loadView('prt.invitations',compact('invites'));
+        // return $pdf->stream('Liste des cartes'.'.pdf');
+        return view('prt.qrcodes',compact('invites'));
+    }
+
     // Generate PDF
     public function createPDF($code) {    
-        $invite = Invite::where('code_unique',$code)->first();
-        $pdf = Pdf::loadView('prt.invitation',compact('invite'));
-        return $pdf->stream('Invitation-'.$invite->id.'.pdf');
+        if($code & $code!=999){
+            $invite = Invite::where('code_unique',$code)->first();
+            $pdf = Pdf::loadView('prt.invitation',compact('invite'));
+            return $pdf->download('Carte - invité '.$invite->id.'.pdf');
+        } else{
+            $pdf = Pdf::loadView('prt.invitation');
+            return $pdf->download('Invitation-'.uniqid().'.pdf');
+        }
       }
 
     // Generate all PDF
@@ -91,6 +106,11 @@ class InviteController extends Controller
     {
         $invite = Invite::where('code_unique',$code)->first();
         return view('check',compact('invite'));
+    }
+
+    public function show_invitation()
+    {
+        return view('invitation-page');
     }
 
     /**

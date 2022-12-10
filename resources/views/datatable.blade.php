@@ -4,31 +4,24 @@
 <div class="card">
     <!-- /.card-header -->
     <div class="card-body">
-      <table id="example1" class="table table-bordered table-striped">
+      <table id="example1" class="table table-bordered table-striped table-responsive">
         <thead>
         <tr>
           <th>N°</th>
-          {{-- <th>Code QR</th> --}}
           <th>Nom</th>
-          <th>Table</th>
-          <th>nbre d'entrées</th>
+          <th>Numéro de table</th>
+          <th>Nombre d'entrées</th>
           <th>Téléphone</th>
-          {{-- <th>#</th> --}}
         </tr>
         </thead>
         <tbody>
           @foreach ($invites as $item)
           <tr>
             <td>{{$loop->iteration}}</td>
-            {{-- <td class="text-center">
-              <img height="50" alt='Code barre' src="https://barcode.tec-it.com/barcode.ashx?data={{strtoupper($item->nom.'+'.$item->prenom).'%0A%0A'.urlencode('https://invitation.expertizlab.com/check/'.$item->code_unique)}}&code=MobileQRCode&translate-esc=true&eclevel=L"/> <br>
-       <a class="btn btn-link btn-sm" href="{{route('invite.show',$item->code_unique)}}"><i class="fa fa-eye"></i> {{$item->code_unique}}</a>
-            </td> --}}
-            <td><a class="btn btn-link btn-sm" href="{{route('invite.show',$item->code_unique)}}">{{$item->nom}}</a></td>
+            <td><a class="btn btn-link btn-sm text-left" href="{{route('invite.show',$item->code_unique)}}">{{$item->nom}}</a></td>
             <td class="text-center">@if($item->table) <a class="btn btn-link btn-sm" href="{{route('table.show',$item->table->id)}}">Table {{$item->table->code}}</a> @else <em>non assigné</em> @endif</td>
             <td class="text-center">{{$item->nb_place}}</td>
             <td>{{$item->telephone}}</td>
-            {{-- <td>{{$item->photo}}</td> --}}
           </tr>
               
           @endforeach

@@ -15,7 +15,7 @@
       <div class="card">
         <div class="card-header bg-danger">
 
-          <h3 style="font-family:cursive">Mariage de ASSIDJIM DJIDAN & DINGAMKOUBOU PHILEMON</h3>
+          <h3 style="font-family:cursive">Mariage de NGABA OKOUM & MARIETTE</h3>
           <h5 class="p-2 bg-light">Invitation</h5>
         </div>
       <div class="card-body">
@@ -111,7 +111,7 @@
     <div class="col-md-10 offset-md-1 ">
       <div class="card">
         <div class="card-header bg-danger">
-          <h3 style="font-family:cursive">Mariage de ASSIDJIM DJIDAN & DINGAMKOUBOU PHILEMON</h3>
+          <h3 style="font-family:cursive">Mariage de NGABA OKOUM & MARIETTE</h3>
           <h5 class="p-2 bg-light">Invitation</h5>
         </div>
       <div class="card-body">

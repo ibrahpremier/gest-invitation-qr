@@ -10,7 +10,7 @@
           <th>N°</th>
           <th>Nom</th>
           <th>Téléphone</th>
-          <th>nbre d'entrées</th>
+          <th>Nombre d'entrées</th>
           <th>Action</th>
         </tr>
         </thead>

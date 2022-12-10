@@ -57,11 +57,13 @@
                     @enderror
                     </div>
                   </div>
+                  <br>
+                  <a href="{{route('check',$invite->code_unique)}}" class="btn btn-link text-danger"> <u>Afficher la carte d'invitation </u></a>
             </div>
 
             <div class="col-5 p-2 text-center">
                 <small class="text-bold">CODE QR </small> <br>
-                <img height="280" alt='Code barre' src="https://barcode.tec-it.com/barcode.ashx?data={{strtoupper($invite->nom.'+'.$invite->prenom).'%0A%0A'.urlencode('https://invitation.expertizlab.com/check/'.$invite->code_unique)}}&code=MobileQRCode&translate-esc=true&eclevel=L"/>
+                <img height="280" alt='Code barre' src="https://barcode.tec-it.com/barcode.ashx?data={{urlencode(strtoupper($invite->nom)).'%0A%0A'.urlencode('https://invitation.expertizlab.com/check/'.$invite->code_unique)}}&code=MobileQRCode&translate-esc=true&eclevel=L"/>
         </div>
         
 

@@ -23,13 +23,13 @@
         </div>
       <div class="card-body">
         
-      <table id="example1" class="table table-bordered table-striped">
+      <table id="example1" class="table table-bordered table-striped table-responsive">
         <thead>
         <tr>
           <th>N°</th>
           <th>Nom</th>
           {{-- <th>N° Table</th> --}}
-          <th>nbre d'entrées</th>
+          <th>Nombre d'entrées</th>
           <th>Téléphone</th>
           <th>Action</th>
         </tr>
@@ -65,7 +65,7 @@
           </button>
         </div>
         <div class="modal-body" id="table1_body">
-                  <table id="table1" class="table table-bordered table-striped">
+                  <table id="table1" class="table table-bordered table-striped table-responsive">
                     <thead>
                     <tr>
                       <th>#</th>

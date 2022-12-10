@@ -13,25 +13,31 @@
 
 
         .numero{
-            position: absolute;
-            margin-top: 10px;
+            /* position: absolute; */
+            margin-top: -5px;
+            font-size: small;
         }
 
 
         .qr_code{
-            margin-top: 10px;
-            margin-left: 5%;
-            position: absolute;
+            /* margin-left: 5%; */
+            /* position: absolute; */
         }
 
         .qr_code img {
-            height: 70px;
+            height: 2.8cm;
         }
 
 
 
 
-        /* .grid-container {
+        .grid-item  {
+            text-align: center;
+            float: left;
+            margin: 10px;
+        }
+
+        /* .grid-container  {
             display: grid;
             gap: 5px;
             grid-template-columns: auto auto;
@@ -50,7 +56,7 @@
                     </div>
 
                     <div class="numero">9M{{ $invite->id }}</div>
-                <img style="width: 100%" src="{{ asset('/assets/dist/img/crea-invit.jpg') }}" alt="logo">
+                {{-- <img style="width: 100%" src="{{ asset('/assets/dist/img/crea-invit.jpg') }}" alt="logo"> --}}
             </div>
         @endforeach
     </div>
